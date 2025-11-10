@@ -1,0 +1,265 @@
+@layer base, theme, layout, utilities;
+
+@layer base {
+    * {
+        font-family: system-ui;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@layer theme {
+    .fancy-writing{
+        font-family: "Kablammo", system-ui;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 3rem;
+        font-variation-settings:
+          "MORF" 0;
+    }    
+}
+
+@layer layout {
+    .gradient {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 15%);
+        z-index: -1; /* Places it above the background image */
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        justify-content: space-evenly;
+        align-items: center;
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    .footer .AI_Warning {
+        width: 25%;
+    }
+
+    .footer .Thanks_Message {
+        width: 30%;
+    }
+
+    nav {
+        height: 100vh;
+        display: flex;
+    }
+
+    nav .logo_container {
+        display: flex;
+        height: 80px;
+        width: 40%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav .links-container {
+        height: 80px;
+        width: 60%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: right;
+    }
+
+    nav a {
+        height: 100%;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    
+    nav .link {
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+        position: relative;
+    }
+
+    nav .link .current {
+        color: rgb(204, 199, 193);
+    }
+
+    nav .link::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px; 
+        background-color: white; 
+        transition: width 0.3s ease;
+    }
+        
+    nav .link:hover {
+        color: rgb(204, 199, 193);
+    }
+
+    nav .link:hover::after {
+        width: 100%;
+    }
+
+    nav svg{
+        fill: white;
+    }
+
+    #sidebar-active {
+        display: none;
+    }
+
+    .open-sidebar-button,
+    .close-sidebar-button {
+        display: none;
+    }
+}
+
+@layer utilities {
+    .footer .AI_Warning p {
+        padding-bottom: 10px;
+        font-size: 1rem;
+        color:rgb(0, 0, 0, 0.5);
+    }
+
+    .footer .Thanks_Message h4 {
+        font-size: 1.6rem;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    .footer .Thanks_Message p {
+        font-size: 1.2rem;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    nav .logo_container h1 {
+        color: white;
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    @layer layout {
+        .footer .AI_Warning {
+            width: 40%;
+        }
+    
+        .footer .Thanks_Message {
+            width: 40%;
+        }
+
+        nav .logo_container {
+            width: 100%;
+        }
+    }
+
+    @layer utilities {
+        nav a {
+            box-sizing: border-box;
+            height: auto;
+            width: 100%;
+            padding: 20px 30px;
+            justify-content: flex-start;
+        }
+
+        .links-container {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            height: auto;
+            border-bottom-left-radius: 15px;
+    
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 10;
+            width: 30%;
+    
+            background-color: rgba(0, 0, 0, 0.6);;
+            box-shadow: -5px 0 5px rgba(0, 0, 0, 0.25);
+        }
+    }
+    .open-sidebar-button,
+    .close-sidebar-button {
+        padding: 20px 20px;
+        display: block;
+    }
+
+    #sidebar-active:checked ~ .links-container {
+        display: flex;
+    }
+
+    #sidebar-active:checked ~ .open-sidebar-button svg{
+        fill: transparent;
+    }
+}
+
+
+  
+@media (max-width: 500px) {
+    @layer layout {
+        .links-container {
+            width: 45% !important;
+        }
+    
+        .footer {
+            display: flex;
+            flex-direction: column-reverse;
+            background-color: white;
+            align-items: center;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+    
+        .footer .AI_Warning {
+            padding-top: 5rem;
+            width: 80%;
+        }
+    
+        .footer .Thanks_Message {
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    @layer utilities {
+        nav .logo_container h1 {
+            font-size: 1.5rem !important;
+        }
+    }
+
+    @layer theme {
+        .fancy-writing {
+            font-size: 2.5rem;
+        }
+    }
+}
+
+/* resize height for nav menu */
+@media (max-height: 500px) {
+    @layer utilities {
+        nav a {
+            padding: 10px 30px;
+        }
+    }
+}

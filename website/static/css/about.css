@@ -1,0 +1,139 @@
+@layer base, theme, layout, utilities;
+
+@layer base {
+    .background_about {
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../images/About_Background.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -2; 
+    }
+}
+
+@layer theme {
+    .lora-theme {
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+      } 
+}
+
+@layer layout {
+    .background_bio {
+        background-image: url("../images/Tan_Blur.webp");
+        background-size: cover;
+        z-index: -1; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-position: top center;
+    } 
+
+    .background_bio .bio {
+        display: flex;
+        flex-direction: row;
+        overflow-x: hidden;
+        min-height: 100vh;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+
+@layer utilities {
+    .bio .intro_img img{
+        border-radius: 30px;
+        box-shadow: 0 0 30px black;
+        z-index: 2;
+    }
+
+    .bio .intro {
+        color: rgb(255, 249, 235);
+        font-size: 1.5rem;
+        width: 40%;
+        padding-top: 20px;
+    }
+
+    .bio .intro h2 {
+        position: relative;
+        justify-self: center;
+        padding-bottom: 10px;
+
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .bio .intro h2:after{
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        height: 4px;
+        width: 100px;
+        border-radius: 2px;
+        background-color:#363636;
+        
+    }
+    
+    .bio .intro p {
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    @layer layout {
+        .background_bio .bio {
+            flex-direction: column;
+            overflow-x: hidden;
+            min-height: auto;
+            width: 100%;
+            padding-bottom: 5rem;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    @layer utilities {
+        .bio .intro_img {
+            width: 80%;
+            height: auto;
+            align-self: center;
+            justify-self: center;
+            margin-top: 5rem;
+        }
+
+        .bio .intro_img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .bio .intro {
+            padding-top: 5rem;
+            width: 80%;
+        }
+
+    }
+}
+
+@media (max-width: 500px) {
+    @layer utilities {
+        .bio .intro {
+            font-size: 1rem;
+        }
+    }
+}

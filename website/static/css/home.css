@@ -1,0 +1,165 @@
+@layer base, theme, layout, utilities;
+
+@layer base {
+    .background_home {
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("../images/Home_Background.webp");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -2; 
+    }
+}
+
+@layer layout {
+    .intro-hook {
+        background-image: url("../images/Grey_Blur.webp");
+        background-size: cover;
+        background-position: top center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        text-align: center;
+        padding: 40px 20px;
+        margin: 0 auto;
+    }
+
+    .work {
+        /* background-color: rgb(116, 111, 107); */
+        background-color: rgb(148, 148, 148);
+    }
+
+    .work .illistrations {
+        padding-bottom: 60px;
+    }
+
+    .work .photos {
+        padding-bottom: 120px;
+    }
+
+    @keyframes appear {
+        from {
+            scale: 0.75;
+        }
+        to {
+            scale: 1;
+        }
+    }
+
+    .grid-item {
+        width: calc(33.33% - 20px);
+        box-sizing: border-box;
+        background: lightgray;
+        margin: 10px;
+        overflow: hidden; 
+        animation: appear linear;
+        animation-timeline: view();
+        animation-range: entry 0;
+    }
+
+    .grid-sizer {
+        width: 33.33%;
+    }
+}
+
+@layer utilities {
+    .intro-hook h4 {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color:rgb(204, 199, 193);
+        font-weight: 100;
+        transition: color 0.3s ease;
+    }
+
+    .intro-hook a {
+        text-decoration: none;
+    }
+
+    .intro-hook h4::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 0.5px;
+        background-color: rgb(204, 199, 193);
+        transition: width 0.3s ease;
+    }
+
+    .intro-hook h4:hover {
+        color: rgb(204, 199, 193);
+    }
+    
+    .intro-hook h4:hover::after {
+        width: 100%;
+    }
+    
+    .intro-hook p {
+        max-width: 550px;
+        margin: 0 auto;
+        color:rgb(205, 188, 166);
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+
+    .grid-item img {
+        width: 100%; 
+        height: auto; 
+        display: block;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .grid-item img:hover {
+        transform: scale(1.1); /* Slight zoom */
+    }
+}
+
+@media (max-width: 1200px) {
+    @layer layout {
+        .grid-item {
+            width: calc(50% - 20px);
+        }
+
+        .grid-sizer {
+            width: 50%;
+        }
+    }
+}
+    
+
+@media (max-width: 500px) {
+    @layer base {
+        .background_home {
+            background-image: url("../images/Home_Background_500px.webp");
+        }
+    }
+
+    @layer layout {
+        .grid-item {
+            width: calc(100% - 20px);
+        }
+
+        .grid-sizer {
+            width: 100%;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0.2;
+            }
+            to {
+                opacity: 1;
+            }
+        }      
+    }
+}
+    

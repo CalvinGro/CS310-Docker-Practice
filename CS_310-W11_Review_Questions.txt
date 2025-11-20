@@ -1,0 +1,11 @@
+What process did you follow for creating the dockerfile?
+- I set the working directory, copied the requirements and installed
+  them, then I made a copy of the directory, and then I exposed the 
+  port for it to run on and ran it.
+  
+What docker commands did you use to run the image?
+
+sudo docker build -t calvinsite:1.0 .
+# I used -t to give it the name and create a version number.
+
+sudo docker run -d --name myflasksite -p 8000:8000 calvinsite:1.0

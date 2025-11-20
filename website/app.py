@@ -21,3 +21,4 @@ def slides():
 if __name__ == '__main__':
     # app.run(debug=True) # for debugging
     app.run(host="0.0.0.0", port=80) # using port 80 for cs310 assignment
+    

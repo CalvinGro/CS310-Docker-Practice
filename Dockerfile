@@ -10,11 +10,11 @@ COPY requirements.txt .
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the directory
+# Copy of directory
 COPY website/ .
 
 # Expose port 80
 EXPOSE 80
 
 # Command to run the app
-CMD ["gunicorn", "--bind", "0.0.0.0:80", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
